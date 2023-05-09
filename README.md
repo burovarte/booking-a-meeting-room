@@ -1,4 +1,8 @@
 # booking-a-meeting-room
 
+    How start:
 
-DEMO: https://booking-a-meeting-room-7w1esp315-burartem.vercel.app/
+    1. npm install
+    2. npm run dev
+
+    DEMO: https://booking-a-meeting-room.vercel.app/

@@ -4,18 +4,20 @@ import { DatePicker, Space, Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 function App() {
-	const [tower, setTower] = useState("A");
+	const [tower, setTower] = useState("А");
 	const [floor, setFloor] = useState("3");
 	const [conferenceRoom, setConferenceRoom] = useState("1");
 	const [date, setDate] = useState("");
+	const [dateString, setDateString] = useState("");
 	const [comment, setComment] = useState("");
 
 	const onChangeСomment = (e) => {
 		setComment(e.target.value);
 	};
 
-	const onChangeData = (date, dateString) => {
-		setDate(dateString);
+	const onChangeDate = (date, dateString) => {
+		setDate(date);
+		setDateString(dateString);
 	};
 
 	const onChangeTower = (event) => {
@@ -35,14 +37,15 @@ function App() {
 
 	const onSend = () => {
 		date !== ""
-			? console.log({
+			? (console.log({
 					Башня: tower,
 					Этаж: floor,
 					Переговорка: conferenceRoom,
-					Дата: date,
+					Дата: dateString,
 					Комментарий: comment,
-			  })
-			: alert("Проверьте все формы!");
+			  }),
+			  alert("Забронировано!"))
+			: alert("Проверьте дату!");
 	};
 
 	const onClear = () => {
@@ -50,6 +53,7 @@ function App() {
 		setFloor("3");
 		setConferenceRoom("1");
 		setDate("");
+		setDateString("");
 		setComment("");
 	};
 
@@ -57,15 +61,11 @@ function App() {
 		return Array(num)
 			.fill(0)
 			.map((_, i) => i + startNum)
-			.map((v) =>
-				v === 1 ? (
-					<option value={v} selected>
-						{v}
-					</option>
-				) : (
-					<option value={v}>{v}</option>
-				)
-			);
+			.map((v) => (
+				<option key={v} value={v}>
+					{v}
+				</option>
+			));
 	};
 
 	return (
@@ -74,27 +74,30 @@ function App() {
 			<div className="sections">
 				<div className="towers">
 					<span>Башня: </span>
-					<select id="towers" onChange={onChangeTower}>
-						<option value="А" selected>
-							А
-						</option>
+					<select value={tower} onChange={onChangeTower}>
+						<option value="А">А</option>
 						<option value="Б">Б</option>
 					</select>
 				</div>
 				<div className="floor">
 					<span>Этаж: </span>
-
-					<select onChange={onChangeFloor}>{floorsAndRoom(25, 3)}</select>
+					<select value={floor} onChange={onChangeFloor}>
+						{floorsAndRoom(25, 3)}
+					</select>
 				</div>
 				<div className="conferenceRoom">
 					<span>Переговорная: </span>
-					<select onChange={onChangeConferenceRoom}>
+					<select value={conferenceRoom} onChange={onChangeConferenceRoom}>
 						{floorsAndRoom(10, 1)}
 					</select>
 				</div>
 
 				<Space direction="vertical">
-					<DatePicker placeholder="Выбор даты" onChange={onChangeData} />
+					<DatePicker
+						value={date}
+						placeholder="Выбор даты"
+						onChange={onChangeDate}
+					/>
 				</Space>
 			</div>
 			<div className="sections textarea">
