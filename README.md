@@ -5,4 +5,4 @@
     1. npm install
     2. npm run dev
 
-    DEMO: https://booking-a-meeting-room.vercel.app 
+    DEMO: [https://booking-a-meeting-room.vercel.app ](https://booking-a-meeting-room-burartem.vercel.app/)
