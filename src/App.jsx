@@ -11,13 +11,11 @@ function App() {
 	const [comment, setComment] = useState("");
 
 	const onChangeСomment = (e) => {
-		console.log("comment:", e.target.value);
 		setComment(e.target.value);
 	};
 
 	const onChangeData = (date, dateString) => {
 		setDate(dateString);
-		console.log(date, dateString);
 	};
 
 	const onChangeTower = (event) => {
@@ -44,11 +42,11 @@ function App() {
 					Дата: date,
 					Комментарий: comment,
 			  })
-			: alert("Проверьте все формы");
+			: alert("Проверьте все формы!");
 	};
 
 	const onClear = () => {
-		setTower("3");
+		setTower("А");
 		setFloor("3");
 		setConferenceRoom("1");
 		setDate("");
@@ -76,7 +74,7 @@ function App() {
 			<div className="sections">
 				<div className="towers">
 					<span>Башня: </span>
-					<select onChange={onChangeTower}>
+					<select id="towers" onChange={onChangeTower}>
 						<option value="А" selected>
 							А
 						</option>
@@ -101,6 +99,7 @@ function App() {
 			</div>
 			<div className="sections textarea">
 				<TextArea
+					value={comment}
 					placeholder="Комментарий"
 					onChange={onChangeСomment}
 					style={{
