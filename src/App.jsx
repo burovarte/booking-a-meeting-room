@@ -44,7 +44,7 @@ function App() {
 					Дата: date,
 					Комментарий: comment,
 			  })
-			: "";
+			: alert("Проверьте все формы");
 	};
 
 	const onClear = () => {
