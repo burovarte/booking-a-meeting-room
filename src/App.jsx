@@ -92,16 +92,13 @@ function App() {
 					/>
 				</Space>
 			</div>
-			<div className="sections textarea">
+			<div className="sections ">
 				<TextArea
+					style={{ resize: "none" }}
+					className="textarea"
 					value={comment}
 					placeholder="Комментарий"
 					onChange={onChangeСomment}
-					style={{
-						height: 80,
-						width: 600,
-						resize: "none",
-					}}
 				></TextArea>
 			</div>
 			<div className="sections">
