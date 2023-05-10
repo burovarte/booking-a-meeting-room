@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { DatePicker, Space, Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import { floorsAndRoom } from "./utils/utils";
 
 function App() {
 	const [tower, setTower] = useState("А");
@@ -57,20 +58,11 @@ function App() {
 		setComment("");
 	};
 
-	const floorsAndRoom = (num, startNum) => {
-		return Array(num)
-			.fill(0)
-			.map((_, i) => i + startNum)
-			.map((v) => (
-				<option key={v} value={v}>
-					{v}
-				</option>
-			));
-	};
-
 	return (
 		<div className="content">
-			<h2>Бронирование переговорной</h2>
+			<div className="sections">
+				<h2>Бронирование переговорной</h2>
+			</div>
 			<div className="sections">
 				<div className="towers">
 					<span>Башня: </span>
